@@ -283,7 +283,7 @@ module HappyMapper
           # Attempt to parse the xml value with Nokogiri XML as a document
           # and select the root element
           xml = Nokogiri::XML(
-            xml, nil, nil,
+            xml, nil, 'UTF-8',
             Nokogiri::XML::ParseOptions::STRICT,
             &nokogiri_config_callback
           )
@@ -479,7 +479,7 @@ module HappyMapper
     #
     unless builder
       write_out_to_xml = true
-      builder = Nokogiri::XML::Builder.new
+      builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8')
     end
 
     #
