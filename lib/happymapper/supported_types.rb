@@ -110,7 +110,11 @@ module HappyMapper
     end
 
     register_type Date do |value|
-      Date.parse(value.to_s)
+      if value.blank?
+        nil
+      else
+        Date.parse(value.to_s)
+      end
     end
 
     register_type DateTime do |value|
